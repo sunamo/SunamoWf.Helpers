@@ -5,9 +5,8 @@ namespace SunamoWf.Helpers;
 /// </summary>
 public class TextBoxPath : TextBox
 {
-    private static readonly ILogger s_logger = NullLogger.Instance;
     private string _basePath;
-    private const string Delimiter = AllStrings.bs;
+    private const string Delimiter = @"\";
     private int _previousOccurrences = 0;
     private List<string> _folders = null;
 
@@ -28,16 +27,22 @@ public class TextBoxPath : TextBox
     {
         _folders = GetFolders(basePath);
 
-        FS.WithEndSlash(ref basePath);
+        basePath = PathShim.WithEndSlash(basePath);
 
         _basePath = basePath;
     }
 
     private List<string> GetFolders(string basePath)
     {
-        _folders = FSGetFolders.GetFoldersEveryFolder(s_logger, basePath);
-        FS.WithEndSlash(ref basePath);
-        CA.TrimStart(basePath, _folders);
+        _folders = PathShim.GetSubFolders(basePath);
+        basePath = PathShim.WithEndSlash(basePath);
+        for (int i = 0; i < _folders.Count; i++)
+        {
+            if (_folders[i].StartsWith(basePath, StringComparison.Ordinal))
+            {
+                _folders[i] = _folders[i].Substring(basePath.Length);
+            }
+        }
 
         return _folders;
     }
@@ -59,7 +64,7 @@ public class TextBoxPath : TextBox
     private List<string> SuggestStrings(string enteredText)
     {
         string trimmedText = enteredText.Trim().Trim('\\', '/');
-        List<string> tokens = FS.GetTokens(trimmedText);
+        List<string> tokens = PathShim.GetTokens(trimmedText);
 
         string lastToken = tokens[tokens.Count - 1];
 
@@ -69,11 +74,11 @@ public class TextBoxPath : TextBox
         }
 
         // Entered text ends with the path delimiter - re-resolve the folder list for the new base path.
-        int occurrences = SH.OccurencesOfStringIn(enteredText, Delimiter);
+        int occurrences = enteredText.Split(new[] { Delimiter }, StringSplitOptions.None).Length - 1;
         if (occurrences != _previousOccurrences)
         {
             _previousOccurrences = occurrences;
-            _folders = GetFolders(FS.Combine(_basePath, trimmedText));
+            _folders = GetFolders(Path.Combine(_basePath, trimmedText));
         }
 
         return _folders;
