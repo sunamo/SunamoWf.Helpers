@@ -28,4 +28,14 @@
     <PackageReleaseNotes>y</PackageReleaseNotes>
     <NoWarn>CS0649;CA1416;CS8625;CS8618;CS8600;CS8602;CS8604;CS8603;CS8601;CS8629;CS8714;CS8622;CS0108;CS8612;CS0618;CS8073</NoWarn>
   </PropertyGroup>
+  <!-- Excluded from the namespace normalization step of the publish tooling (namespaces are intentionally kept as-is). -->
+  <ItemGroup>
+    <None Remove="_sunamo\**" />
+    <None Remove="PicturesDesktopShared.cs" />
+    <None Remove="PicturesForms.cs" />
+    <None Remove="PicturesHelperFw.cs" />
+    <None Remove="PicturesSunamoShared.cs" />
+    <None Remove="SearchingInLbWF.cs" />
+    <None Remove="TextBoxPath.cs" />
+  </ItemGroup>
 </Project>
