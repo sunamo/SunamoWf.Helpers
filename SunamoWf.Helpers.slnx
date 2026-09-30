@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="SunamoWf.Helpers\\SunamoWf.Helpers.csproj" />
+  <Project Path="SunamoWf.Helpers\SunamoWf.Helpers.csproj" />
+  <Project Path="SunamoWf.Helpers.Tests\SunamoWf.Helpers.Tests.csproj" />
 </Solution>
