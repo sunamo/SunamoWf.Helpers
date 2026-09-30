@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers.Internal;
+namespace SunamoWf.Helpers._sunamo;
 
 /// <summary>
 /// Minimal path/file helpers used by the WinForms helpers, replacing the former dependency on the FS/TF/SH/CA utility packages.

@@ -1,4 +1,4 @@
-global using SunamoWf.Helpers.Internal;
+global using SunamoWf.Helpers._sunamo;
 global using System;
 global using System.Drawing.Drawing2D;
 global using System.Collections.Generic;

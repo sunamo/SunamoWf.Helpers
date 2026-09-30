@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers.Internal;
+namespace SunamoWf.Helpers._sunamo;
 
 /// <summary>
 /// File extension constants (with leading dot) for the image formats handled by this package.
