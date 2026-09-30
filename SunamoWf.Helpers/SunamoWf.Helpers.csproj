@@ -7,7 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <Description>WinForms helper classes extracted from sunamo.wf (pictures, search-in-listbox, path autocomplete)</Description>
-    <Version>26.9.28.1</Version>
+    <Version>26.9.30.2</Version>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoWf.Helpers/</PackageProjectUrl>
