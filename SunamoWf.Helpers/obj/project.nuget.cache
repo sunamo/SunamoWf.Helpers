@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "shOlIgJVi54=",
+  "success": true,
+  "projectFilePath": "E:\\vs\\Projects\\WindowsNuGetPackages-claude\\SunamoWf.Helpers\\SunamoWf.Helpers\\SunamoWf.Helpers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aktiv\\.nuget\\packages\\microsoft.netcore.app.ref\\10.0.10\\microsoft.netcore.app.ref.10.0.10.nupkg.sha512",
+    "C:\\Users\\aktiv\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\10.0.10\\microsoft.windowsdesktop.app.ref.10.0.10.nupkg.sha512",
+    "C:\\Users\\aktiv\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\10.0.10\\microsoft.aspnetcore.app.ref.10.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
