@@ -13,43 +13,43 @@ public partial class PicturesSunamo
         Guid formatGuid = image.RawFormat.Guid;
         if (formatGuid == ImageFormat.Jpeg.Guid)
         {
-            return AllExtensions.jpg;
+            return ImageExtensions.jpg;
         }
         else if (formatGuid == ImageFormat.Gif.Guid)
         {
-            return AllExtensions.gif;
+            return ImageExtensions.gif;
         }
         else if (formatGuid == ImageFormat.Bmp.Guid)
         {
-            return AllExtensions.bmp;
+            return ImageExtensions.bmp;
         }
         else if (formatGuid == ImageFormat.Icon.Guid)
         {
-            return AllExtensions.ico;
+            return ImageExtensions.ico;
         }
         else if (formatGuid == ImageFormat.Tiff.Guid)
         {
-            return AllExtensions.tiff;
+            return ImageExtensions.tiff;
         }
         else if (formatGuid == ImageFormat.Wmf.Guid)
         {
-            return AllExtensions.wmf;
+            return ImageExtensions.wmf;
         }
         else if (formatGuid == ImageFormat.Emf.Guid)
         {
-            return AllExtensions.emf;
+            return ImageExtensions.emf;
         }
         else if (formatGuid == ImageFormat.Exif.Guid)
         {
-            return AllExtensions.exif;
+            return ImageExtensions.exif;
         }
         else if (formatGuid == ImageFormat.MemoryBmp.Guid)
         {
-            return AllExtensions.bmp;
+            return ImageExtensions.bmp;
         }
         else
         {
-            ThrowEx.NotImplementedCase(formatGuid);
+            throw new NotImplementedException($"Unsupported image format: {formatGuid}");
         }
         return null;
     }

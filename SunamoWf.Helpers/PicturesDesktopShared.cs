@@ -10,15 +10,15 @@ namespace SunamoWf.Helpers;
 /// </remarks>
 public class PicturesDesktopShared
 {
-    private static readonly Regex s_colonRegex = new Regex(AllStrings.colon);
+    private static readonly Regex s_colonRegex = new Regex(":");
 
     /// <summary>
     /// Converts an image file to an .ico file (written into newDir) using the given conversion method.
     /// </summary>
     public static void ConvertImageToIco(string newDir, string path, Func<Image, Icon> method)
     {
-        string newPath = FS.ChangeExtension(path, ".ico", false);
-        newPath = FS.ChangeDirectory(newPath, newDir);
+        string newPath = PathShim.ChangeExtension(path, ".ico");
+        newPath = PathShim.ChangeDirectory(newPath, newDir);
         using (FileStream fileStream = new FileStream(newPath, FileMode.OpenOrCreate))
         {
             Bitmap image = new Bitmap(path);
@@ -32,8 +32,8 @@ public class PicturesDesktopShared
     /// </summary>
     public static Bitmap RotateBitmap(Image bitmap)
     {
-        int angle = RandomHelper.RandomInt(0, 45);
-        angle -= RandomHelper.RandomInt(0, 90);
+        int angle = Random.Shared.Next(0, 45);
+        angle -= Random.Shared.Next(0, 90);
         return RotateBitmap(bitmap, (float)angle);
     }
 
@@ -90,7 +90,7 @@ public class PicturesDesktopShared
     /// </summary>
     public static string ImageToBase64(string imageFile)
     {
-        return ImageToBase64(Bitmap.FromFile(imageFile), GetImageFormatFromExtension2(FS.GetExtension(imageFile)));
+        return ImageToBase64(Bitmap.FromFile(imageFile), GetImageFormatFromExtension2(Path.GetExtension(imageFile)));
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class PicturesDesktopShared
                 graphics.DrawImage(originalBitmap, points);
             }
             resultBitmap.SetResolution(dpiX, dpiY);
-            SaveImage(FS.ChangeExtension(path, ".jpg", false), resultBitmap, GetImageFormatFromExtension2(FS.GetExtension(path)));
+            SaveImage(PathShim.ChangeExtension(path, ".jpg"), resultBitmap, GetImageFormatFromExtension2(Path.GetExtension(path)));
         }
     }
 
@@ -145,7 +145,7 @@ public class PicturesDesktopShared
     /// </summary>
     public static string ImageToBase64(string path, ImageFormat format, out int width, out int height)
     {
-        if (FS.ExistsFile(path))
+        if (File.Exists(path))
         {
             Image image = Image.FromFile(path);
             width = image.Width;
@@ -195,7 +195,7 @@ public class PicturesDesktopShared
                 if (item.Id == dateTakenPropertyId)
                 {
                     PropertyItem propertyItem = image.GetPropertyItem(dateTakenPropertyId);
-                    string dateTaken = s_colonRegex.Replace(Encoding.UTF8.GetString(propertyItem.Value), AllStrings.dash, 2);
+                    string dateTaken = s_colonRegex.Replace(Encoding.UTF8.GetString(propertyItem.Value), "-", 2);
                     return DateTime.Parse(dateTaken);
                 }
             }

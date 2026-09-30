@@ -13,43 +13,43 @@ public class PicturesHelperFw
         Guid formatGuid = image.RawFormat.Guid;
         if (formatGuid == ImageFormat.Jpeg.Guid)
         {
-            return AllExtensions.jpg;
+            return ImageExtensions.jpg;
         }
         else if (formatGuid == ImageFormat.Gif.Guid)
         {
-            return AllExtensions.gif;
+            return ImageExtensions.gif;
         }
         else if (formatGuid == ImageFormat.Bmp.Guid)
         {
-            return AllExtensions.bmp;
+            return ImageExtensions.bmp;
         }
         else if (formatGuid == ImageFormat.Icon.Guid)
         {
-            return AllExtensions.ico;
+            return ImageExtensions.ico;
         }
         else if (formatGuid == ImageFormat.Tiff.Guid)
         {
-            return AllExtensions.tiff;
+            return ImageExtensions.tiff;
         }
         else if (formatGuid == ImageFormat.Wmf.Guid)
         {
-            return AllExtensions.wmf;
+            return ImageExtensions.wmf;
         }
         else if (formatGuid == ImageFormat.Emf.Guid)
         {
-            return AllExtensions.emf;
+            return ImageExtensions.emf;
         }
         else if (formatGuid == ImageFormat.Exif.Guid)
         {
-            return AllExtensions.exif;
+            return ImageExtensions.exif;
         }
         else if (formatGuid == ImageFormat.MemoryBmp.Guid)
         {
-            return AllExtensions.bmp;
+            return ImageExtensions.bmp;
         }
         else
         {
-            ThrowEx.NotImplementedCase(formatGuid);
+            throw new NotImplementedException($"Unsupported image format: {formatGuid}");
         }
         return null;
     }
@@ -73,7 +73,7 @@ public class PicturesHelperFw
         }
 
         string tempPath = toFolderTempSlash + fileNameWithoutExtension + "_tn" + extension;
-        FS.CreateUpfoldersPsysicallyUnlessThere(tempPath);
+        PathShim.CreateUpfoldersUnlessThere(tempPath);
         TransformImage(image, targetSize.Width, targetSize.Height, tempPath);
         using (Image resizedImage = Bitmap.FromFile(tempPath))
         {
@@ -88,7 +88,7 @@ public class PicturesHelperFw
                     {
                         canvas.Save(memoryStream, ImageFormat.Jpeg);
                         byte[] bytes = memoryStream.ToArray();
-                        TF.WriteAllBytesArray(finalPath, bytes);
+                        File.WriteAllBytes(finalPath, bytes);
                     }
                 }
             }
@@ -129,7 +129,7 @@ public class PicturesHelperFw
         using (MemoryStream memoryStream = new MemoryStream())
         {
             thumbnail.Save(memoryStream, codecInfo, encoderParameters);
-            FS.SaveMemoryStream(memoryStream, path);
+            File.WriteAllBytes(path, memoryStream.ToArray());
         }
     }
 
@@ -161,7 +161,7 @@ public class PicturesHelperFw
         }
 
         string tempPath = toFolderTempSlash + fileNameWithoutExtension + "_tn" + extension;
-        FS.CreateUpfoldersPsysicallyUnlessThere(tempPath);
+        PathShim.CreateUpfoldersUnlessThere(tempPath);
         TransformImage(image, targetSize.Width, targetSize.Height, finalPath);
     }
 
@@ -202,7 +202,7 @@ public class PicturesHelperFw
     /// </summary>
     public static void SaveJpeg(string path, Image image, long quality)
     {
-        path = FS.ChangeExtension(path, AllExtensions.jpg, false);
+        path = PathShim.ChangeExtension(path, ImageExtensions.jpg);
         try
         {
             EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
