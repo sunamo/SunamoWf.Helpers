@@ -64,9 +64,9 @@ public class CHLBH
     /// </summary>
     public void UnCheckAll()
     {
-        for (int i = 0; i < _checkedListBox.Items.Count; i++)
+        for (int index = 0; index < _checkedListBox.Items.Count; index++)
         {
-            _checkedListBox.SetItemChecked(i, false);
+            _checkedListBox.SetItemChecked(index, false);
         }
     }
 
@@ -75,9 +75,9 @@ public class CHLBH
     /// </summary>
     public void CheckAll()
     {
-        for (int i = 0; i < _checkedListBox.Items.Count; i++)
+        for (int index = 0; index < _checkedListBox.Items.Count; index++)
         {
-            _checkedListBox.SetItemChecked(i, true);
+            _checkedListBox.SetItemChecked(index, true);
         }
     }
 }

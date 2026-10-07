@@ -31,11 +31,11 @@ public class TSTBH
     /// <summary>
     /// Raises PressEnter on Enter with non-empty text, then clears the text when configured not to clear on click.
     /// </summary>
-    private void OnKeyDown(object? sender, KeyEventArgs e)
+    private void OnKeyDown(object? sender, KeyEventArgs eventArgs)
     {
-        if (tstb.Text.Trim() != "" && e.KeyCode == Keys.Enter)
+        if (tstb.Text.Trim() != "" && eventArgs.KeyCode == Keys.Enter)
         {
-            PressEnter?.Invoke(tstb.Text, e);
+            PressEnter?.Invoke(tstb.Text, eventArgs);
             if (!_clearAfterClick)
             {
                 tstb.Text = "";
@@ -46,7 +46,7 @@ public class TSTBH
     /// <summary>
     /// Clears the text on click when configured so.
     /// </summary>
-    private void OnClick(object? sender, EventArgs e)
+    private void OnClick(object? sender, EventArgs eventArgs)
     {
         if (_clearAfterClick)
         {

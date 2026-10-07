@@ -40,14 +40,14 @@ public class SearchingInLbWF
         _originalItems = items.ToArray();
     }
 
-    private void ClearMenuItem_Click(object sender, EventArgs e)
+    private void ClearMenuItem_Click(object sender, EventArgs eventArgs)
     {
         _searchTextBox.Text = "";
     }
 
-    private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+    private void SearchTextBox_KeyDown(object sender, KeyEventArgs eventArgs)
     {
-        if (e.KeyCode == Keys.Back)
+        if (eventArgs.KeyCode == Keys.Back)
         {
             _searchTextBox.Text = "";
         }
@@ -78,12 +78,12 @@ public class SearchingInLbWF
         }
     }
 
-    private void ClearButton_Click(object sender, EventArgs e)
+    private void ClearButton_Click(object sender, EventArgs eventArgs)
     {
         _searchTextBox.Text = "";
     }
 
-    private void SearchTextBox_TextChanged(object sender, EventArgs e)
+    private void SearchTextBox_TextChanged(object sender, EventArgs eventArgs)
     {
         if (_searchTextBox.Text == "")
         {

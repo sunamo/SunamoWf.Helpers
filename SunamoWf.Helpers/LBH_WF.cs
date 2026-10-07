@@ -95,38 +95,38 @@ public class LBH_WF
     /// </summary>
     public void CopyToClipboard()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         foreach (object item in lb.Items)
         {
-            sb.AppendLine(item.ToString());
+            stringBuilder.AppendLine(item.ToString());
         }
-        Clipboard.SetText(sb.ToString());
+        Clipboard.SetText(stringBuilder.ToString());
     }
 
     /// <summary>
     /// Enter starts the selected item, C copies it to the clipboard, Delete raises ItemRemoved (each only when enabled).
     /// </summary>
-    private void OnKeyDown(object? sender, KeyEventArgs e)
+    private void OnKeyDown(object? sender, KeyEventArgs eventArgs)
     {
         if (!Selected)
         {
             return;
         }
-        if (e.KeyCode == Keys.Enter)
+        if (eventArgs.KeyCode == Keys.Enter)
         {
             if (runOne)
             {
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(SelectedS!) { UseShellExecute = true });
             }
         }
-        else if (e.KeyCode == Keys.C)
+        else if (eventArgs.KeyCode == Keys.C)
         {
             if (saveToClipboard)
             {
                 Clipboard.SetText(SelectedS!);
             }
         }
-        else if (e.KeyCode == Keys.Delete)
+        else if (eventArgs.KeyCode == Keys.Delete)
         {
             if (removeOne)
             {
