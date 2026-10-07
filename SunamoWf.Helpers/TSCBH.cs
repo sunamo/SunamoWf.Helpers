@@ -54,7 +54,7 @@ public class TSCBH
     /// <summary>
     /// Forwards the change to the SelectedIndexChanged event.
     /// </summary>
-    private void OnSelectedIndexChanged(object? sender, EventArgs e)
+    private void OnSelectedIndexChanged(object? sender, EventArgs eventArgs)
     {
         SelectedIndexChanged?.Invoke();
     }

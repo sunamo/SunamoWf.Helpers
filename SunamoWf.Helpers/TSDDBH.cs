@@ -109,7 +109,7 @@ public class TSDDBH
     /// </summary>
     public void AddValuesOfEnumAsItems(Array values)
     {
-        int i = 0;
+        int index = 0;
         foreach (object value in values)
         {
             ToolStripMenuItem item = new ToolStripMenuItem
@@ -117,21 +117,21 @@ public class TSDDBH
                 Text = value.ToString(),
                 Tag = value
             };
-            if (i == 0)
+            if (index == 0)
             {
                 item.Checked = true;
                 prev = item;
             }
             item.Click += OnItemClick;
             tsddb.DropDownItems.Add(item);
-            i++;
+            index++;
         }
     }
 
     /// <summary>
     /// Moves the check mark to the clicked item, stores the selection and shows it in the tooltip.
     /// </summary>
-    public void OnItemClick(object? sender, EventArgs e)
+    public void OnItemClick(object? sender, EventArgs eventArgs)
     {
         prev.Checked = false;
         ToolStripMenuItem item = (ToolStripMenuItem)sender!;
@@ -164,14 +164,14 @@ public class TSDDBH
     public void AddValuesOfIntAsItems(EventHandler handler, int initialValue, int resizeOf, int degrees)
     {
         List<int> values = new List<int>();
-        for (int i = degrees; i >= 1; i--)
+        for (int index = degrees; index >= 1; index--)
         {
-            values.Add(initialValue - i * resizeOf);
+            values.Add(initialValue - index * resizeOf);
         }
         values.Add(initialValue);
-        for (int i = 1; i <= degrees; i++)
+        for (int step = 1; step <= degrees; step++)
         {
-            values.Add(initialValue + i * resizeOf);
+            values.Add(initialValue + step * resizeOf);
         }
         foreach (int value in values)
         {

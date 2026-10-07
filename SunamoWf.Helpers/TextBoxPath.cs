@@ -36,18 +36,18 @@ public class TextBoxPath : TextBox
     {
         _folders = PathShim.GetSubFolders(basePath);
         basePath = PathShim.WithEndSlash(basePath);
-        for (int i = 0; i < _folders.Count; i++)
+        for (int index = 0; index < _folders.Count; index++)
         {
-            if (_folders[i].StartsWith(basePath, StringComparison.Ordinal))
+            if (_folders[index].StartsWith(basePath, StringComparison.Ordinal))
             {
-                _folders[i] = _folders[i].Substring(basePath.Length);
+                _folders[index] = _folders[index].Substring(basePath.Length);
             }
         }
 
         return _folders;
     }
 
-    private void TextBoxPath_TextChanged(object sender, EventArgs e)
+    private void TextBoxPath_TextChanged(object sender, EventArgs eventArgs)
     {
         TextBox textBox = (TextBox)sender;
         if (textBox != null)

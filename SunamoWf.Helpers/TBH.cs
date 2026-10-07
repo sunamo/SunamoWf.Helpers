@@ -16,9 +16,9 @@ public class TBH
     /// <summary>
     /// Selects all text when Ctrl+A is pressed.
     /// </summary>
-    private static void OnKeyDown(object? sender, KeyEventArgs e)
+    private static void OnKeyDown(object? sender, KeyEventArgs eventArgs)
     {
-        if (e.Control && e.KeyCode == Keys.A)
+        if (eventArgs.Control && eventArgs.KeyCode == Keys.A)
         {
             ((TextBox)sender!).SelectAll();
         }

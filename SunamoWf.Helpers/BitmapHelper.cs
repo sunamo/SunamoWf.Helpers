@@ -16,20 +16,20 @@ public class BitmapHelper
         Color newColor = Color.Red;
         var newBitmap = new Bitmap(scrBitmap.Width, scrBitmap.Height);
 
-        for (int i = 0; i < scrBitmap.Width; i++)
+        for (int pixelX = 0; pixelX < scrBitmap.Width; pixelX++)
         {
-            for (int j = 0; j < scrBitmap.Height; j++)
+            for (int pixelY = 0; pixelY < scrBitmap.Height; pixelY++)
             {
-                var actualColor = scrBitmap.GetPixel(i, j);
+                var actualColor = scrBitmap.GetPixel(pixelX, pixelY);
 
                 // Edge pixels have low alpha; keeping them untouched preserves smoothness.
                 if (actualColor.A > 150)
                 {
-                    newBitmap.SetPixel(i, j, newColor);
+                    newBitmap.SetPixel(pixelX, pixelY, newColor);
                 }
                 else
                 {
-                    newBitmap.SetPixel(i, j, actualColor);
+                    newBitmap.SetPixel(pixelX, pixelY, actualColor);
                 }
             }
         }
@@ -55,13 +55,13 @@ public class BitmapHelper
             }
         }, ColorAdjustType.Bitmap);
 
-        using (Graphics g = Graphics.FromImage(image))
+        using (Graphics graphics = Graphics.FromImage(image))
         {
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-            g.InterpolationMode = InterpolationMode.High;
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+            graphics.InterpolationMode = InterpolationMode.High;
 
-            g.DrawImage(
+            graphics.DrawImage(
                 image,
                 new Rectangle(Point.Empty, image.Size),
                 0, 0, image.Width, image.Height,

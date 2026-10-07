@@ -136,11 +136,11 @@ public class PicturesHelperFw
     private static ImageCodecInfo GetEncoderInfo(string mimeType)
     {
         ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-        for (int i = 0; i < codecs.Length; i++)
+        for (int index = 0; index < codecs.Length; index++)
         {
-            if (codecs[i].MimeType == mimeType)
+            if (codecs[index].MimeType == mimeType)
             {
-                return codecs[i];
+                return codecs[index];
             }
         }
         return null;
