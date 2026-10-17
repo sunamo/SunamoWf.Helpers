@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Helper for easier use of ToolStripProgressBar updated from worker threads.

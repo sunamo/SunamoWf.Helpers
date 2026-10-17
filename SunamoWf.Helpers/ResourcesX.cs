@@ -1,7 +1,7 @@
+namespace SunamoWf;
+
 using System.Collections;
 using System.Resources;
-
-namespace SunamoWf.Helpers;
 
 /// <summary>
 /// Helpers for editing .resx resource files.
