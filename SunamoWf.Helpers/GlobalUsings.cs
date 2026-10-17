@@ -9,3 +9,4 @@ global using System.Linq;
 global using System.Text;
 global using System.Text.RegularExpressions;
 global using System.Windows.Forms;
+global using SunamoWf;

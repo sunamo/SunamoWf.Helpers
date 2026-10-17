@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Helper for ToolStripTextBox raising an event when Enter is pressed.

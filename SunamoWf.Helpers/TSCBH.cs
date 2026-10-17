@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Typed variant of TSCBH exposing the selected item as T.

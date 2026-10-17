@@ -1,6 +1,6 @@
-using System.Drawing.Text;
+namespace SunamoWf;
 
-namespace SunamoWf.Helpers;
+using System.Drawing.Text;
 
 /// <summary>
 /// Helper methods for recoloring System.Drawing bitmaps.

@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Helper methods for TextBox.

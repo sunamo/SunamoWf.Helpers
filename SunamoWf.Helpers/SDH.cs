@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Simple Dialog Helper - shows message boxes titled with the application name.

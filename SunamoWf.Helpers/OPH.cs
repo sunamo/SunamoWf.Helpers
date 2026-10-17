@@ -1,4 +1,4 @@
-namespace SunamoWf.Helpers;
+namespace SunamoWf;
 
 /// <summary>
 /// Helper methods for traversing the WinForms control tree and range checks.
