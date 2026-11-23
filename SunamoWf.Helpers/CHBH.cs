@@ -21,6 +21,12 @@ public class CHBH
     /// </summary>
     public static CheckState GetCheckState(List<bool> values)
     {
+        // No values means nothing is checked.
+        if (values.Count == 0)
+        {
+            return CheckState.Unchecked;
+        }
+
         if (values.All(value => value))
         {
             return CheckState.Checked;
